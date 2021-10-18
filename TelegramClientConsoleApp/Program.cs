@@ -11,7 +11,7 @@ namespace TelegramClientConsoleApp
         static Task Main(string[] args)
         {
 
-            var appSettings = new TelegramBotCredentials();
+            var appSettings = new TelegramBotSettings();
 
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -26,9 +26,13 @@ namespace TelegramClientConsoleApp
                 .Parameter("-t", "--text")
                     .WithDescription("message to be send")
                     .WithExamples("simple text")
-                    .IsRequired()
+                    .IsOptional()
                 .Call(async (text) =>
                 {
+                    if (string.IsNullOrEmpty(text))
+                    {
+                        text = appSettings.Text;
+                    }
                     Console.WriteLine($"Sending text: {text} to Telegram chat (id: {appSettings.ChatId}).");
 
                     var sender = new MessageSender(appSettings.ChatId, appSettings.Token);
