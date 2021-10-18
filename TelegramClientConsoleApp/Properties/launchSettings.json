@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TelegramClientConsoleApp": {
+      "commandName": "Project",
+      "commandLineArgs": "-t \"example message\""
+    }
+  }
+}
