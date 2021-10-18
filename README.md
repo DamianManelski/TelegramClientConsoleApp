@@ -1,2 +1,2 @@
 # TelegramClientConsoleApp
-Simple telegram console app client in .net core
+Simple Telegram console app client in .net core
